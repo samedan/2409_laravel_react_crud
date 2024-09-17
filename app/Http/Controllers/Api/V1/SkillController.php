@@ -4,14 +4,19 @@ namespace App\Http\Controllers\Api\V1;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreSkillRequest;
+use App\Http\Resources\V1\SkillResource;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class SkillController extends Controller
 {
-    // GET Index
+    // GET All Skills Index
     public function index() {
         return response()->json("Skill index");
+    }
+    // GET specific skill http://127.0.0.1:8000/api/v1/skills/1
+    public function show(Skill $skill){
+        return new SkillResource($skill);
     }
 
     // POST index

@@ -31,3 +31,8 @@
 > php artisan make:request StoreSkillRequest
 > add StoreSkillRequest to SkillController
 > StoreSkillRequest add rules()
+
+### Filter data sent to frontEnd
+
+> php artisan make:resource V1/SkillResource
+> SkillController -> return new SkillResource($skill)
