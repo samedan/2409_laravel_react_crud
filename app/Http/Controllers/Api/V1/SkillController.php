@@ -20,7 +20,8 @@ class SkillController extends Controller
         // return SkillResource::collection((Skill::paginate(1)));
 
         // return SkillCollection
-        return new SkillCollection((Skill::paginate(1)));
+        // return new SkillCollection((Skill::paginate(1)));
+        return new SkillCollection(Skill::all());
     }
     // GET specific skill http://127.0.0.1:8000/api/v1/skills/1
     public function show(Skill $skill){

@@ -1,19 +1,12 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useContext, useEffect } from "react";
+
 import { Link } from "react-router-dom";
+import SkillContext from "../../context/SkillContext";
 
 function SkillIndex() {
-    const [skills, setSkills] = useState([]);
+    const { skills, getSkills } = useContext(SkillContext);
 
     useEffect(() => {
-        const getSkills = async () => {
-            const apiSkills = await axios.get(
-                "http://127.0.0.1:8000/api/v1/skills"
-            );
-            console.log(apiSkills);
-            setSkills(apiSkills.data.data);
-        };
-
         getSkills();
     }, []);
 

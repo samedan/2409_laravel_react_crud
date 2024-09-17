@@ -8,6 +8,8 @@
 
 ### React installed in 'react-rest-api' folder
 
+> axios.defaults.baseURL in ReactFolder/src/context/SkillContext.js
+
 ## Tailwind
 
 ## FlowBite

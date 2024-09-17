@@ -1,21 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import SkillContext from "../../context/SkillContext";
 
 function SkillCreate() {
-    const [formValues, setFormValues] = useState({
-        name: "",
-        slug: "",
-    });
+    const { formValues, onChange, storeSkill } = useContext(SkillContext);
 
-    const onChange = (e) => {
-        const { name, value } = e.target;
-        setFormValues({ ...formValues, [name]: value });
-    };
-
-    //127.0.0.1:8000/api/v1/skills
-
-    http: return (
+    return (
         <div className="mt-12">
-            <form className="max-w-md mx-auto p-4 bg-white shadow-md rounded-sm">
+            <form
+                onSubmit={storeSkill}
+                className="max-w-md mx-auto p-4 bg-white shadow-md rounded-sm"
+            >
                 <div className="space-y-6">
                     <div className="mb-4">
                         <label
