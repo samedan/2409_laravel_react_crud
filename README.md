@@ -50,3 +50,7 @@
 > https://tailwindcss.com/docs/guides/create-react-app
 > Axios & React-router-dom
 > npm i react-router-dom, npm i axios
+
+### React Context
+
+> SkillContext.jsx -> export SkillProvider
