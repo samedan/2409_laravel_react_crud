@@ -6,6 +6,8 @@
 
 > https://github.com/samedan/2409_laravel_react_crud
 
+### React installed in 'react-rest-api' folder
+
 ### Skill Model& Controller
 
 > php artisan make:controller Api/V1/SkillController
