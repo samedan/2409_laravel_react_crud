@@ -40,8 +40,8 @@ export const SkillProvider = ({ children }) => {
         } catch (e) {
             console.log(e);
 
-            if (e.reponse.status === 422) {
-                setErrors(e.response.data.error);
+            if (e.response.status === 422) {
+                setErrors(e.response.data.errors);
             }
         }
     };
@@ -61,6 +61,7 @@ export const SkillProvider = ({ children }) => {
                 storeSkill,
                 onChange,
                 formValues,
+                errors,
             }}
         >
             {children}

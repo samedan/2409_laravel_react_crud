@@ -2,7 +2,8 @@ import { useContext, useState } from "react";
 import SkillContext from "../../context/SkillContext";
 
 function SkillCreate() {
-    const { formValues, onChange, storeSkill } = useContext(SkillContext);
+    const { formValues, onChange, storeSkill, errors } =
+        useContext(SkillContext);
 
     return (
         <div className="mt-12">
@@ -24,6 +25,11 @@ function SkillCreate() {
                             value={formValues["name"]}
                             onChange={onChange}
                         />
+                        {errors.name && (
+                            <span className="text-sm text-red-400">
+                                {errors.name[0]}
+                            </span>
+                        )}
                     </div>
                     <div className="mb-4">
                         <label
@@ -38,6 +44,11 @@ function SkillCreate() {
                             value={formValues["slug"]}
                             onChange={onChange}
                         />
+                        {errors.slug && (
+                            <span className="text-sm text-red-400">
+                                {errors.slug[0]}
+                            </span>
+                        )}
                     </div>
                 </div>
                 <div className="my-4 text-center">
