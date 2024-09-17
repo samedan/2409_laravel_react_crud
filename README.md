@@ -8,6 +8,10 @@
 
 ### React installed in 'react-rest-api' folder
 
+## Tailwind
+
+## FlowBite
+
 ### Skill Model& Controller
 
 > php artisan make:controller Api/V1/SkillController
@@ -38,3 +42,11 @@
 
 > php artisan make:resource V1/SkillResource
 > SkillController -> return new SkillResource($skill)
+
+# ////////////////////////////////////////////////////
+
+### React & Tailwind
+
+> https://tailwindcss.com/docs/guides/create-react-app
+> Axios & React-router-dom
+> npm i react-router-dom, npm i axios
