@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import SkillContext from "../../context/SkillContext";
 
 function SkillIndex() {
-    const { skills, getSkills } = useContext(SkillContext);
+    const { skills, getSkills, deleteSkill } = useContext(SkillContext);
 
     useEffect(() => {
         getSkills();
@@ -48,7 +48,22 @@ function SkillIndex() {
                                         {skill.name}
                                     </th>
                                     <td className="px-6 py-4">{skill.slug}</td>
-                                    <td className="px-6 py-4">Edit/delete</td>
+                                    <td className="px-6 py-6 space-x-2">
+                                        <Link
+                                            to={`/skills/${skill.id}/edit`}
+                                            className="px-4 py-2 bg-green-500 hover:bg-green-700 text-white rounded-md"
+                                        >
+                                            Edit
+                                        </Link>
+                                        <button
+                                            className="px-4 py-2 bg-red-500 hover:bg-red-700 text-white rounded-md "
+                                            onClick={() =>
+                                                deleteSkill(skill.id)
+                                            }
+                                        >
+                                            Delete
+                                        </button>
+                                    </td>
                                 </tr>
                             );
                         })}

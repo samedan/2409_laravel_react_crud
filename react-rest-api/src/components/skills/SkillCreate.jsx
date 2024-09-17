@@ -1,9 +1,13 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect } from "react";
 import SkillContext from "../../context/SkillContext";
 
 function SkillCreate() {
-    const { formValues, onChange, storeSkill, errors } =
+    const { formValues, onChange, storeSkill, errors, setErrors } =
         useContext(SkillContext);
+
+    useEffect(() => {
+        setErrors({});
+    }, []);
 
     return (
         <div className="mt-12">

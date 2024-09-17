@@ -5,11 +5,13 @@ axios.defaults.baseURL = "http://127.0.0.1:8000/api/v1/";
 
 const SkillContext = createContext();
 
+const initialForm = {
+    name: "",
+    slug: "",
+};
+
 export const SkillProvider = ({ children }) => {
-    const [formValues, setFormValues] = useState({
-        name: "",
-        slug: "",
-    });
+    const [formValues, setFormValues] = useState(initialForm);
 
     const [skills, setSkills] = useState([]);
     const [skill, setSkill] = useState([]);
@@ -23,19 +25,24 @@ export const SkillProvider = ({ children }) => {
         setSkills(apiSkills.data.data);
     };
 
-    // GET Skill
+    // GET Single Skill
     const getSkill = async (id) => {
         const response = await axios.get(`skills/` + id);
+        const apiSkill = response.data.data;
         // console.log(apiSkills);
-        setSkill(response.data.data);
+        setSkill(apiSkill);
+        setFormValues({
+            name: apiSkill.name,
+            slug: apiSkill.slug,
+        });
     };
 
     // POST Skill
     const storeSkill = async (e) => {
         e.preventDefault();
+        setFormValues(initialForm);
         try {
             await axios.post("skills", formValues);
-            getSkills();
             navigate("/skills");
         } catch (e) {
             console.log(e);
@@ -44,6 +51,30 @@ export const SkillProvider = ({ children }) => {
                 setErrors(e.response.data.errors);
             }
         }
+    };
+
+    // UPDATE PUT Skill
+    const updateSkill = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.put("skills/" + skill.id, formValues);
+            setFormValues(initialForm);
+            navigate("/skills");
+        } catch (e) {
+            console.log(e);
+            if (e.response.status === 422) {
+                setErrors(e.response.data.errors);
+            }
+        }
+    };
+
+    // DELETE Skill
+    const deleteSkill = async (id) => {
+        if (!window.confirm("Are you sure?")) {
+            return;
+        }
+        await axios.delete("skills/" + id);
+        getSkills();
     };
 
     const onChange = (e) => {
@@ -62,6 +93,9 @@ export const SkillProvider = ({ children }) => {
                 onChange,
                 formValues,
                 errors,
+                setErrors,
+                updateSkill,
+                deleteSkill,
             }}
         >
             {children}
