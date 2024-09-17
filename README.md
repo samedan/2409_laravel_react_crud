@@ -6,6 +6,8 @@
 
 > https://github.com/samedan/2409_laravel_react_crud
 
+> ![App](https://github.com/samedan/2409_laravel_react_crud/blob/main/public/images/printscreen.jpg)
+
 ### React installed in 'react-rest-api' folder
 
 > axios.defaults.baseURL in ReactFolder/src/context/SkillContext.js
